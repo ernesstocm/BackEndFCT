@@ -1,0 +1,22 @@
+scalar DateTime
+scalar Date
+
+#type
+#input
+input  CreateTaskInputDto{
+    startDate: DateTime
+    endDate: DateTime
+    name: String
+    descrption: String
+    state: String
+    userResponsibleId: String
+}
+#response
+type CreateTaskResponseDto{
+    result: Boolean
+}
+#query
+#mutation
+type Mutation{
+    createTask(createTaskInput:CreateTaskInputDto):CreateTaskResponseDto
+}

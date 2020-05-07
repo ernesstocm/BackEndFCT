@@ -1,0 +1,40 @@
+scalar DateTime
+scalar Date
+#type
+type UserDto {
+    id: String
+    nick: String
+    phone: String
+    role: String
+    email: String
+    password: String
+    urlImage: String
+    request_token: String
+    reset_password_token: String
+    reset_password_expires: String
+    deleted: String
+    createdAt: DateTime
+    updatedAt: DateTime
+}
+#response
+type CreateUserResponseDto{
+  result: Boolean
+}
+#input
+input CreateUserInputDto{
+    nick: String
+    password: String
+    email: String
+    phone: String
+    role: String
+    urlImage: String
+}
+#query
+type Query {
+  getAllUsers: [UserDto]!
+  getAllUsersDeleted: [UserDto]!
+}
+#mutation
+type Mutation{
+  createUser(createUserInputDto: CreateUserInputDto): CreateUserResponseDto
+}
