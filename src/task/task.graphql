@@ -2,12 +2,45 @@ scalar DateTime
 scalar Date
 
 #type
-#input
-input  CreateTaskInputDto{
+type TaskEntity{
+    id: String
     startDate: DateTime
     endDate: DateTime
     name: String
-    descrption: String
+    description: String
+    state: String
+    userResponsibleId: String
+}
+#input
+input GetTaskActiveByUserInput{
+    userId: String
+}
+input GetTaskFinishedByUserInput{
+    userId: String
+}
+input GetTaskDeletedByUserInput{
+    userId: String
+}
+input DeleteTaskInputDto{
+    taskId: String
+}
+input FinishTaskInputDto{
+    taskId: String
+}
+input CreateTaskInputDto{
+    startDate: DateTime
+    endDate: DateTime
+    name: String
+    description: String
+    state: String
+    userResponsibleId: String
+}
+input UpdateTaskInputDto{
+    id: String
+    startDate: DateTime
+    endDate: DateTime
+    name: String
+    description: String
     state: String
     userResponsibleId: String
 }
@@ -15,8 +48,37 @@ input  CreateTaskInputDto{
 type CreateTaskResponseDto{
     result: Boolean
 }
+type UpdateTaskResponseDto{
+    result: Boolean
+}
+type DeleteTaskResponseDto{
+    result: Boolean
+}
+type FinishTaskResponseDto{
+    result: Boolean
+}
+type GetTaskActiveResponse{
+    task: [TaskEntity]
+    count: Float
+}
+type GetTaskFinishedResponse{
+    task: [TaskEntity]
+    count: Float
+}
+type GetTaskDeletedResponse{
+    task: [TaskEntity]
+    count: Float
+}
 #query
+type Query{
+    getTaskActive(getTaskActiveInput: GetTaskActiveByUserInput): GetTaskActiveResponse
+    getTaskFinished(getTaskFinishedInput: GetTaskFinishedByUserInput): GetTaskFinishedResponse
+    getTaskDeleted(getTaskDeletedInput: GetTaskDeletedByUserInput): GetTaskDeletedResponse
+}
 #mutation
 type Mutation{
-    createTask(createTaskInput:CreateTaskInputDto):CreateTaskResponseDto
+    createTask(createTaskInputDto: CreateTaskInputDto): CreateTaskResponseDto
+    updateTask(updateTaskInputDto: UpdateTaskInputDto): UpdateTaskResponseDto
+    deleteTask(deleteTaskInputDto: DeleteTaskInputDto): DeleteTaskResponseDto
+    finishTask(finishTaskInputDto: FinishTaskInputDto): FinishTaskResponseDto
 }
