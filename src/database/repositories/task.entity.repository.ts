@@ -14,6 +14,7 @@ export class TaskRepository extends BaseRepository<TaskEntity>{
         .where('task.deleted = 0')
         .andWhere('task.finished = 0')
         .andWhere('task.userResponsible = :userId', {userId: user})
+        .orderBy('task.startDate')
         .getManyAndCount();
     }
 

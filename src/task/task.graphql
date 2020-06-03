@@ -4,8 +4,8 @@ scalar Date
 #type
 type TaskEntity{
     id: String
-    startDate: DateTime
-    endDate: DateTime
+    startDate: Date
+    endDate: Date
     name: String
     description: String
     state: String

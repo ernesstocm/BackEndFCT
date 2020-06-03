@@ -1,3 +1,4 @@
+import { BcryptHelper } from './../strategy/helper/bcrypt.helper';
 import { UserRepositoryProvider } from 'src/database/repositories/user.entity.repository';
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -11,7 +12,7 @@ import { UserResolver } from "./resolver/user.resolver";
             UserEntity,
         ]),
     ],
-    providers: [UserService, UserResolver, UserRepositoryProvider],
+    providers: [UserService, UserResolver, UserRepositoryProvider, BcryptHelper],
     exports: [UserService],
 })
 export class UserModule { }

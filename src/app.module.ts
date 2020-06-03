@@ -12,8 +12,8 @@ import { TaskEntity } from './database/entity/task.entity';
 @Module({
   imports: [
     UserModule,
-    TaskEntity,
     TaskModule,
+    TaskEntity,
     GraphQLModule.forRoot({
       typePaths: ['./**/*.graphql'],
       context: ({ req, res }) => ({
