@@ -101,9 +101,7 @@ export class TaskService{
     }
     async getTasksActivesByUser(getTaskActiveByUser: GetTaskActiveByUser){
         const task = await this.taskRepository.getTaskActiveByUserId(getTaskActiveByUser.userId);
-        console.log('task', task)
         const getTaskActiveResponse = new GetTaskActivesByUserResponse();
-        console.log(getTaskActiveResponse)
         getTaskActiveResponse.task = task[0];
         getTaskActiveResponse.count = task[1];
 
@@ -111,9 +109,7 @@ export class TaskService{
     }
     async getTasksFinishedByUser(getTaskFinishedByUser: GetTaskFinishedInputDto){
         const task = await this.taskRepository.getTaskfinishedByUserId(getTaskFinishedByUser.userId);
-        console.log('task', task)
         const getTaskFinishedResponse = new GetTaskFinishedsByUserResponse();
-        console.log(getTaskFinishedResponse)
         getTaskFinishedResponse.task = task[0];
         getTaskFinishedResponse.count = task[1];
 
@@ -121,9 +117,7 @@ export class TaskService{
     }
     async getTasksDeletedByUser(getTaskDeletedByUser: GetTaskDeletedInputDto){
         const task = await this.taskRepository.getTaskDeletedByUserId(getTaskDeletedByUser.userId);
-        console.log('task', task)
         const getTaskDeletedResponse = new GetTaskDeletedsByUserResponse();
-        console.log(getTaskDeletedResponse)
         getTaskDeletedResponse.task = task[0];
         getTaskDeletedResponse.count = task[1];
 
